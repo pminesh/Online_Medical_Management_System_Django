@@ -1,0 +1,82 @@
+{% extends 'User/Cust_master.html' %}
+
+{% block title %}Contact Us{% endblock %}
+
+<!-- css -->
+	{% load static %}
+  <link href="{% static 'User/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'User/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'User/plugins/cubeportfolio/css/cubeportfolio.min.css' %}">
+  <link href="{% static 'User/css/nivo-lightbox.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/nivo-lightbox-theme/default/default.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'User/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/animate.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/style.css' %}" rel="stylesheet">
+
+{% block body %}
+  <!-- Section: intro -->
+    <section id="intro" class="intro">
+      <div class="intro-content">
+        <div class="container">
+          <div class="row">
+            <center>
+        <div id="formcon">
+            <div class="headcon">
+                <h3>Contact Us </h3>
+            </div>
+
+            <div class="form1">
+                <form action="contact_data" method="post">
+                    {% csrf_token %}
+                    <table  class="login" style="width:30%;solid gray;">
+                        <tr>
+                            <th colspan="2" align="center">
+                                {% if Error%}
+                                    <b style="color: red; border: 1px solid gray;">
+                                        {{ Error }}
+                                    </b>
+                                {% elif messages %}
+                                    {% for message in messages %}
+                                        <b style="color: green; border: 1px solid gray;">
+                                            {{ message }}
+                                        </b>{% endfor %}
+                                {% endif %}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="color:black;">Name</th>
+                            <td style="padding:10px;"><input type="text" name="name" placeholder="Name" id="input" title="Name" style="color:black;border:1px solid black;background: transparent;" required></td>
+                        </tr>
+                        <tr>
+                            <th style="color:black;">Email</th>
+                            <td style="padding:10px;"><input type="email" name="email" placeholder="Email" id="input" title="Email" style="color:black;border:1px solid black;background: transparent;" required></td>
+                        </tr>
+                        <tr>
+                            <th style="color:black;">Mobile</th>
+                            <td style="padding:10px;"><input type="number" name="mobile" placeholder="Mobile" id="input" title="Mobile" style="color:black;border:1px solid black;background: transparent;" required></td>
+                        </tr>
+                        <tr>
+                        	<th style="color:black;">Message</th>
+                            <td style="padding:10px;"><textarea type="text" name="message" placeholder="Message" id="textarea" title="Message" style="color:black;border:1px solid black;background: transparent;" required></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" style="padding:10px;">
+                                <input type="submit" value="Send" id="btn" style="background-color:blue;color:white; width:100px; height:40px;">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div id="clear"></div>
+        </div>
+    </center>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /Section: intro -->
+{% endblock %}

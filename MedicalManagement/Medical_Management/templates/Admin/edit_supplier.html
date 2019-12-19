@@ -1,0 +1,143 @@
+{% load static %};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Edit Supplier</title>
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="{% static 'Admin/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/bootstrap-responsive.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/fullcalendar.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/matrix-style.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/matrix-media.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/font-awesome/css/font-awesome.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/jquery.gritter.css' %}" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+{% include 'Admin/admin_header.html' %}
+<!--sidebar-menu-->
+{% include 'Admin/admin_sidebar.html' %}
+<!--sidebar-menu-->
+
+<!--main-container-part-->
+<div id="content">
+<!--breadcrumbs-->
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+  </div>
+<!--End-breadcrumbs-->
+
+
+<script src="{% static 'Admin/js/excanvas.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.ui.custom.js'%}"></script>
+<script src="{% static 'Admin/js/bootstrap.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.flot.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.flot.resize.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.peity.min.js'%}"></script>
+<script src="{% static 'Admin/js/fullcalendar.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.dashboard.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.gritter.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.interface.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.chat.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.validate.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.form_validation.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.wizard.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.uniform.js'%}"></script>
+<script src="{% static 'Admin/js/select2.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.popover.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.dataTables.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.tables.js'%}"></script>
+
+<script type="text/javascript">
+
+</script>
+    {% block body %}
+  <!-- Section: intro -->
+    <section id="intro" class="intro">
+       <div class="intro-content">
+        <div class="container">
+          <div class="row">
+            <div class="form">
+            <div class="head">
+                <form action="/admin/update_supplier/{{edit.id}}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <center>
+                    <table border="1" class="register" cellpadding="20" cellspacing="20">
+                        <tr>
+                             <th colspan="4" align="center"><h3>Edit Supplier</h3></th>
+                        </tr>
+                        <tr>
+                            <th colspan="4" align="center">
+                                {% if Error%}
+                                    <b style="color: red; border: 1px solid gray;">
+                                        {{ Error }}
+                                    </b>
+                                {% elif messages %}
+                                    {% for message in messages %}
+                                        <b style="color: green; border: 1px solid gray;">
+                                            {{ message }}
+                                        </b>{% endfor %}
+                                {% endif %}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Id</th>
+                            <td><input type="text" name="id" placeholder="id" value="{{ edit.id }}" id="input" title="id" required >
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Firstname</th>
+                            <td><input type="text" name="firstname" value="{{ edit.firstname }}" placeholder="Firstname" id="input" title="Firstname" required pattern="^[A-Za-z]+">
+                            </td>
+                            <th>Lastname</th>
+                            <td><input type="text" name="lastname" value="{{ edit.lastname }}" placeholder="Lastname" id="input" title="Lastname" required pattern="^[A-Za-z]+">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Shopname</th>
+                            <td colspan="3"><input type="text" value="{{ edit.shopname }}" name="shopname" placeholder="Shopname" id="input" title="Shopname" pattern="^[A-Za-z\s\.]{3,}" required></td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td><textarea type="text" name="address" placeholder="Address" id="textarea" title="Address" required >{{ edit.address }}</textarea>
+                            </td>
+                            <th>City</th>
+                            <td><input type="text" name="city" value="{{ edit.city }}" placeholder="City" id="input" title="City" required pattern="^[A-Za-z]+"></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><input type="email" name="email" value="{{ edit.email }}" placeholder="Email" id="input" title="Email" required></td>
+                            <th>Mobile</th>
+                            <td><input type="text" name="mobile" value="{{ edit.mobile }}" placeholder="Mobile No" id="input" title="Mobile" maxlength="10" required pattern="^[0-9]+"></td>
+
+                        </tr>
+                        <tr>
+                            <th>Image</th>
+                            <td><input type="file" name="img" id="input" title="Select Image" required>{{ edit.photo }}</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="4" align="center">
+                                <input type="submit" value="Update" id="btn">
+                            </td>
+                        </tr>
+                    </table>
+                        </center>
+                </form>
+            </div>
+            <div id="clear"></div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /Section: intro -->
+{% endblock %}
+</body>
+</html>

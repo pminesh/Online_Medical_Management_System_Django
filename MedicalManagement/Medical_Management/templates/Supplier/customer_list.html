@@ -1,0 +1,136 @@
+{% load static %};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Customer List</title>
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="{% static 'Admin/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/bootstrap-responsive.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/fullcalendar.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/matrix-style.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/matrix-media.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/font-awesome/css/font-awesome.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/jquery.gritter.css' %}" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+</head>
+<body>
+
+{% include 'Supplier/supplier_header.html' %}
+<!--sidebar-menu-->
+{% include 'Supplier/supplier_sidebar.html' %}
+<!--sidebar-menu-->
+
+<!--main-container-part-->
+<div id="content">
+<!--breadcrumbs-->
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+  </div>
+<!--End-breadcrumbs-->
+
+
+<script src="{% static 'Admin/js/excanvas.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.ui.custom.js'%}"></script>
+<script src="{% static 'Admin/js/bootstrap.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.flot.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.flot.resize.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.peity.min.js'%}"></script>
+<script src="{% static 'Admin/js/fullcalendar.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.dashboard.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.gritter.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.interface.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.chat.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.validate.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.form_validation.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.wizard.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.uniform.js'%}"></script>
+<script src="{% static 'Admin/js/select2.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.popover.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.dataTables.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.tables.js'%}"></script>
+
+<script type="text/javascript">
+
+</script>
+    {% block body %}
+
+<div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>Customer List</h5>
+          </div>
+            <center>
+                {% if Error%}
+                    <div class="alert bg-pink alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ Error }}
+                    </div>
+                {% elif messages %}
+                {% for message in messages %}
+                    <div class="alert bg-green alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% endif %}
+            </center>
+          <div class="widget-content nopadding">
+            <table id="data" class="table table-bordered data-table" align="center">
+              <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Fisrtname</th>
+                    <th>Lastname</th>
+                    <th>Birthday</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for data in datas %}
+                  <tr class="gradeX">
+                      <td style="text-align:center;">{{ forloop.counter }}</td>
+                      <td style="text-align:center;">{{ data.firstname }}</td>
+                      <td style="text-align:center;">{{ data.lastname }}</td>
+                      <td style="text-align:center;">{{ data.bod }}</td>
+                      <td style="text-align:center;">{{ data.email }}</td>
+                      <td style="text-align:center;">{{ data.mobile }}</td>
+                      <td style="text-align:center;">
+                          <a href="supplier_edit_cust/{{ data.id }}">Edit</a> |
+                          <a href="supplier_delete_cust/{{ data.id }}" onclick="return confirm('Are You Sure..!')">Delete</a>
+                      </td>
+                  </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+  </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+
+	<script type="text/javascript">
+		$('#data').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'pdf', 'print'
+        ]
+    } );
+	</script>
+{% endblock %}
+</div>
+</body>
+</html>

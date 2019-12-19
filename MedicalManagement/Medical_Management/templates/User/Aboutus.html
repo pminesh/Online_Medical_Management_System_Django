@@ -1,0 +1,51 @@
+{% extends 'User/master.html' %}
+
+{% block title %}About Us{% endblock %}
+
+<!-- css -->
+	{% load static %}
+  <link href="{% static 'User/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'User/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'User/plugins/cubeportfolio/css/cubeportfolio.min.css' %}">
+  <link href="{% static 'User/css/nivo-lightbox.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/nivo-lightbox-theme/default/default.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'User/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/animate.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/style.css' %}" rel="stylesheet">
+
+{% block body %}
+  <!-- Section: intro -->
+    <section id="intro" class="intro">
+      <div class="intro-content">
+        <div class="container">
+          <div class="row">
+            <div class="con_about">
+                <center>
+                    <div class="sub_about">
+                        <div id="about_header">
+
+                        </div>
+                        <div class="about">
+                            <div class="about1">
+                                <img src="{% static 'User/img/dummy/one.jpg' %}" class="img-responsive" alt="" />
+                            </div>
+                            <br>
+                            <div class="about1">
+                                <h2>About  Medical Shop</h2>
+                                <p>
+Student Medical Shop is small family owned business that has been selling medical supplies. We are an authorized distributor of many recognized brands including Welch Allyn and 3M Littmann Stethoscopes. The mission of studentmedicalshop.com is to offer medical professionals and allied health students diagnostic equipment in a range of prices affordable to any budget. We provide the highest quality and most trusted brands in diagnostic equipment at competitive prices with reliable and dedicated personal service. By doing so, we enable our customers to obtain the equipment necessary to be successful healthcare professionals or students. We are happy to help with any questions you have.</p>
+                            </div>
+                            <div id="clear"></div>
+                        </div>
+                    </div>
+                </center>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /Section: intro -->
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'User/master.html' %}
+
+{% block title %}Registration{% endblock %}
+
+<!-- css -->
+	{% load static %}
+  <link href="{% static 'User/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'User/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'User/plugins/cubeportfolio/css/cubeportfolio.min.css' %}">
+  <link href="{% static 'User/css/nivo-lightbox.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/nivo-lightbox-theme/default/default.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'User/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/animate.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/style.css' %}" rel="stylesheet">
+
+{% block body %}
+  <!-- Section: intro -->
+    <section id="intro" class="intro">
+      <div class="intro-content">
+        <div class="container">
+          <div class="row">
+            <div class="form">
+                <center>
+            <div class="head">
+                <h3>Supplier Register</h3>
+            </div>
+                    </center>
+                <form action="supplierinsert" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                   <center>
+                    <table   class="register" style="width:70%; solid gray;">
+                        <tr>
+                            <th colspan="4" align="center">
+                                <center>
+                                {% if Error%}
+                                    <b style="color: red; border: 1px solid gray;">
+                                        {{ Error }}
+                                    </b>
+                                {% elif messages %}
+                                    {% for message in messages %}
+                                        <b style="color: green; border: 1px solid gray;">
+                                            {{ message }}
+                                        </b>{% endfor %}
+                                {% endif %}
+                                </center>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="color:black;">First Name</th>
+                            <td style="padding:10px;"><input type="text" name="firstname" placeholder="suppliername" id="input" title="suppliername" required style="color:black;border:1px solid black;background: transparent;" pattern="^[A-Za-z]+">
+                            </td>
+                            <th style="color:black;">Last name</th>
+                            <td style="padding:10px;"><input type="text" name="lastname" placeholder="Lastname" id="input" title="Lastname" required style="color:black;border:1px solid black;background: transparent;" pattern="^[A-Za-z]+">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="color:black;">Shopname</th>
+                            <td style="padding:10px;" colspan="3"><input type="text" name="shopname" placeholder="Shopname" id="input" title="Shopname" style="width:670px;color:black;border:1px solid black;background: transparent;" required></td>
+                        </tr>
+                        <tr>
+                            <th style="color:black;">Address</th>
+                            <td style="padding:10px;"><textarea type="text" name="address" placeholder="Address" id="textarea" title="Address" style="color:black;border:1px solid black;background: transparent;" required ></textarea>
+                            </td>
+                            <th style="color:black;">City</th>
+                            <td style="padding:10px;"><input type="text" name="city" placeholder="City" id="input" title="City" required style="color:black;border:1px solid black;background: transparent;" pattern="^[A-Za-z]+"></td>
+                        </tr>
+                        <tr>
+                            <th style="color:black;">Email</th>
+                            <td style="padding:10px;"><input type="email" name="email" placeholder="Email" id="input" title="Email" style="color:black;border:1px solid black;background: transparent;" required></td>
+                            <th style="color:black;">Password</th>
+                            <td style="padding:10px;"><input type="text" name="password" placeholder="Password" id="input" title="Password" style="color:black;border:1px solid black;background: transparent;" minlength="8" maxlength="15" required pattern="(?=.*\d)(?=.*[a-z]).{8,}"></td>
+                        </tr>
+
+                        <tr>
+                            <th style="color:black;">Mobile</th>
+                            <td style="padding:10px;"><input type="text" name="mobile" placeholder="Mobile No" id="input" title="Mobile" maxlength="10" style="color:black;border:1px solid black;background: transparent;" required pattern="^[0-9]+"></td>
+
+                            <th style="color:black;">Image</th>
+                            <td style="padding:10px;"><input type="file" name="img" id="input" title="Select Image" style="color:black;border:1px solid black;background: transparent;" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" align="center" style="padding:10px;">
+                                <input type="submit" value="Submit" id="btn" style="background-color:blue;color:white; width:100px; height:40px;">
+                            </td>
+                        </tr>
+                    </table>
+                        </center>
+                </form>
+            </div>
+            <div id="clear"></div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /Section: intro -->
+{% endblock %}

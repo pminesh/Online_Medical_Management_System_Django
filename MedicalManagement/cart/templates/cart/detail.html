@@ -1,0 +1,73 @@
+{% extends 'User/Cust_master.html' %}
+
+{% block title %}Your Shopping Cart{% endblock %}
+
+<!-- css -->
+	{% load static %}
+  <link href="{% static 'User/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'User/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'User/plugins/cubeportfolio/css/cubeportfolio.min.css' %}">
+  <link href="{% static 'User/css/nivo-lightbox.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/nivo-lightbox-theme/default/default.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'User/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/animate.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/style.css' %}" rel="stylesheet">
+
+{% block body %}
+<!-- Navbar End -->
+    <div class="product" style="border:1px solid orange; padding-top:120px;">
+	    <div class="sub_product">
+            <div class="prod_header">
+                <center><h1>Your shopping cart</h1></center>
+            </div>
+            <center>
+            <table border="1" id="carttable" cellspacing="10" cellpadding="10">
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Remove</th>
+                    <th>Unit Price</th>
+                    <th>Price</th>
+                </tr>
+                {% for item in cart %}
+                    {% with product=item.product %}
+                <tr align="center">
+                    <td align="center" width="30%">
+                         <a href="{{ product.get_absolute_url }}">
+                             <img src="{% if product.prod_photo %}{{ product.prod_photo.url }}{% endif %}" width="80%" height="15%">
+                         </a>
+                    </td>
+                    <td>{{ product.prod_name }}</td>
+                    <td>
+                        <form action="{% url "cart:cart_add" product.id %}" method="post">
+                            {% csrf_token %}
+                            {{ item.update_quantity_form.quantity }}
+                            {{ item.update_quantity_form.update }}
+                            <input type="submit" id="update" value="Update">
+                        </form>
+                    </td>
+                    <td>
+                        <a href="{% url "cart:cart_remove" product.id %}">Remove</a>
+                    </td>
+                    <td class="num">Rs.{{ item.price }}/-</td>
+                    <td class="num">Rs.{{ item.total_price }}/-</td>
+                </tr>
+                    {% endwith %}
+                {% endfor %}
+                <tr class="total" align="center">
+                    <th>Total</th>
+                    <th colspan="4"></th>
+                    <th class="num">Rs.{{ cart.get_total_price }}/-</th>
+                </tr>
+            </table>
+                </center>
+            <br>
+            <p class="textbtn">
+                <a href="../product1" style="border:1px solid red;margin-left:80px;padding:10px; background-color:gray;color:white;" class="button light">Continue shopping</a>
+                <a href="{% url 'orders:order_create' %}" class="button" style="border:1px solid red;margin-left:950px;padding:10px; background-color:gray;color:white;">Checkout</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

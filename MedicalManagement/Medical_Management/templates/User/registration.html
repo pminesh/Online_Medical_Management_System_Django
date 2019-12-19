@@ -1,0 +1,84 @@
+{% extends 'User/master.html' %}
+
+{% block title %}Registration{% endblock %}
+
+<!-- css -->
+	{% load static %}
+  <link href="{% static 'User/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'User/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'User/plugins/cubeportfolio/css/cubeportfolio.min.css' %}">
+  <link href="{% static 'User/css/nivo-lightbox.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/nivo-lightbox-theme/default/default.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'User/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/animate.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/style.css' %}" rel="stylesheet">
+
+
+{% block body %}
+  <!-- Section: intro -->
+    <section id="intro" class="intro">
+      <div class="intro-content">
+        <div class="container">
+          <div class="row">
+            <div class="form">
+            <div class="head">
+                <form action="userinsert" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+c                    <center>
+                    <table border="1" class="register" cellpadding="20" cellspacing="20">
+                        <tr>
+                            <th colspan="4" align="center"><p style="color: red; border: 1px solid gray;"></p></th>
+                        </tr>
+                        <tr>
+                            <th>Firstname</th>
+                            <td><input type="text" name="firstname" placeholder="Firstname" id="input" title="Firstname" required pattern="^[A-Za-z]+">
+                            </td>
+                            <th>Lastname</th>
+                            <td><input type="text" name="lastname" placeholder="Lastname" id="input" title="Lastname" required pattern="^[A-Za-z]+">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Gender</th>
+                            <td><input type="radio" name="gender" value="Male" id="radio" title="Male" required> Male
+                                <input type="radio" name="gender" value="Female" id="radio" title="Female" required> Female</td>
+                            <th>Date of Birth</th>
+                            <td><input type="date" name="bod" placeholder="Birthday" id="input" title="Birthday" required></td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td><textarea type="text" name="address" placeholder="Address" id="textarea" title="Address" required ></textarea>
+                            </td>
+                            <th>City</th>
+                            <td><input type="text" name="city" placeholder="City" id="input" title="City" required pattern="^[A-Za-z]+"></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><input type="email" name="email" placeholder="Email" id="input" title="Email" required></td>
+                            <th>Password</th>
+                            <td><input type="text" name="password" placeholder="Password" id="input" title="Password" minlength="8" maxlength="15" required pattern="(?=.*\d)(?=.*[a-z]).{8,}"></td>
+                        </tr>
+                        <tr>
+                            <th>Mobile</th>
+                            <td><input type="text" name="mobile" placeholder="Mobile No" id="input" title="Mobile" maxlength="10" required pattern="^[0-9]+"></td>
+                            <th>Image</th>
+                            <td><input type="file" name="img" id="input" title="Select Image" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" align="center">
+                                <input type="submit" value="Submit" id="btn">
+                            </td>
+                        </tr>
+                    </table>
+                        </center>
+                </form>
+            </div>
+            <div id="clear"></div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /Section: intro -->
+{% endblock %}

@@ -1,0 +1,141 @@
+{% load static %};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Add Customer</title>
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="{% static 'Admin/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/bootstrap-responsive.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/fullcalendar.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/matrix-style.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/matrix-media.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/font-awesome/css/font-awesome.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/jquery.gritter.css' %}" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+{% include 'Admin/admin_header.html' %}
+<!--sidebar-menu-->
+{% include 'Admin/admin_sidebar.html' %}
+<!--sidebar-menu-->
+
+<!--main-container-part-->
+<div id="content">
+<!--breadcrumbs-->
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+  </div>
+<!--End-breadcrumbs-->
+
+
+<script src="{% static 'Admin/js/excanvas.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.ui.custom.js'%}"></script>
+<script src="{% static 'Admin/js/bootstrap.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.flot.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.flot.resize.min.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.peity.min.js'%}"></script>
+<script src="{% static 'Admin/js/fullcalendar.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.dashboard.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.gritter.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.interface.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.chat.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.validate.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.form_validation.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.wizard.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.uniform.js'%}"></script>
+<script src="{% static 'Admin/js/select2.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.popover.js'%}"></script>
+<script src="{% static 'Admin/js/jquery.dataTables.min.js'%}"></script>
+<script src="{% static 'Admin/js/matrix.tables.js'%}"></script>
+
+<script type="text/javascript">
+
+</script>
+    {% block body %}
+  <!-- Section: intro -->
+    <section id="intro" class="intro">
+       <div class="intro-content">
+        <div class="container">
+          <div class="row">
+            <div class="form">
+            <div class="head">
+                <form action="cust_data" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <center>
+                    <table  class="register" cellpadding="20" cellspacing="20">
+                        <tr>
+                             <th colspan="4" align="center"><h3>Customer Register</h3></th>
+                        </tr>
+                        <tr>
+                            <th colspan="4" align="center">
+                                {% if Error%}
+                                    <b style="color: red; border: 1px solid gray;">
+                                        {{ Error }}
+                                    </b>
+                                {% elif messages %}
+                                    {% for message in messages %}
+                                        <b style="color: green; border: 1px solid gray;">
+                                            {{ message }}
+                                        </b>{% endfor %}
+                                {% endif %}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Firstname</th>
+                            <td><input type="text" name="firstname" placeholder="Firstname" id="input" title="Firstname" required pattern="^[A-Za-z]+">
+                            </td>
+                            <th>Lastname</th>
+                            <td><input type="text" name="lastname" placeholder="Lastname" id="input" title="Lastname" required pattern="^[A-Za-z]+">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Gender</th>
+                            <td><input type="radio" name="gender" value="Male" id="radio" title="Male" required> Male
+                                <input type="radio" name="gender" value="Female" id="radio" title="Female" required> Female</td>
+                            <th>Date of Birth</th>
+                            <td><input type="date" name="bod" placeholder="Birthday" id="input" title="Birthday" required></td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td><textarea type="text" name="address" placeholder="Address" id="textarea" title="Address" required ></textarea>
+                            </td>
+                            <th>City</th>
+                            <td><input type="text" name="city" placeholder="City" id="input" title="City" required pattern="^[A-Za-z]+"></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td><input type="email" name="email" placeholder="Email" id="input" title="Email" required></td>
+                            <th>Password</th>
+                            <td><input type="password" name="password" placeholder="Password" id="input" title="Password" minlength="8" maxlength="15" required pattern="(?=.*\d)(?=.*[a-z]).{8,}"></td>
+                        </tr>
+                        <tr>
+                            <th>Mobile</th>
+                            <td><input type="text" name="mobile" placeholder="Mobile No" id="input" title="Mobile" maxlength="10" required pattern="^[0-9]+"></td>
+                            <th>Image</th>
+                            <td><input type="file" name="img" id="input" title="Select Image" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" align="center">
+                                <input type="submit" value="Submit" id="btn">
+                            </td>
+                        </tr>
+                    </table>
+                        </center>
+                </form>
+            </div>
+            <div id="clear"></div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /Section: intro -->
+{% endblock %}
+</body>
+</html>

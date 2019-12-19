@@ -1,0 +1,54 @@
+{% extends 'User/Cust_master.html' %}
+
+{% block title %}product{% endblock %}
+
+<!-- css -->
+	{% load static %}
+  <link href="{% static 'User/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'User/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'User/plugins/cubeportfolio/css/cubeportfolio.min.css' %}">
+  <link href="{% static 'User/css/nivo-lightbox.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/nivo-lightbox-theme/default/default.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'User/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/animate.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/style.css' %}" rel="stylesheet">
+
+{% block body %}
+<div class="product">
+	<div class="sub_product">
+		<div class="prod_header">
+			<h1>Details Of Product</h1>
+		</div>
+        <center>
+            <div style="width:50%;padding-top:30px;" >
+              <img src="{{ product.prod_photo.url }}" style="width:100%;height:100%;">
+                <table cellpadding="10" cellspacing="10">
+                    <tr>
+                        <th align="left"><font size="5">Name  </font></th>
+                        <td style="padding-left:20px;"><font size="5">{{ product.prod_name }}</font></td>
+                    </tr>
+                    <tr>
+                        <th align="left"><font size="5">Category  </font></th>
+                        <td style="padding-left:20px;"><font size="5">{{ product.category_id }}</font></td>
+                    </tr>
+                    <tr>
+                        <th align="left"><font size="5">Price  </font></th>
+                        <td style="padding-left:20px;"><font size="5">Rs.{{ product.prod_price }}/-</font></td>
+                    </tr>
+                     <tr>
+                        <th align="left"><font size="5">Description  </font></th>
+                        <td style="padding-left:20px;"><font size="5">{{ product.prod_description }}</font></td>
+                    </tr>
+                </table>
+                <form method="post" action="{% url "cart:cart_add" product.id %}">
+                {% csrf_token %}
+                 {{ cart_product_form }}
+                  <p><input type="submit" value="Add to Cart" style="border: none;outline: 0;padding: 12px;color: white;background-color: #1B2631;text-align: center;cursor: pointer;width: 100%;font-size: 18px;"></p>
+                 </form>
+                <h3><a href="../product" style="color:black;text-decoration:none;">Back</a></h3>
+            </div>
+        </center>
+	</div>
+</div>
+{% endblock %}

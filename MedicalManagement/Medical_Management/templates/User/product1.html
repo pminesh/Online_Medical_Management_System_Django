@@ -1,0 +1,49 @@
+{% extends 'User/Cust_master.html' %}
+
+{% block title %}product{% endblock %}
+
+<!-- css -->
+	{% load static %}
+  <link href="{% static 'User/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'User/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'User/plugins/cubeportfolio/css/cubeportfolio.min.css' %}">
+  <link href="{% static 'User/css/nivo-lightbox.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/nivo-lightbox-theme/default/default.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'User/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/animate.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/style.css' %}" rel="stylesheet">
+
+{% block body %}
+   <!-- Section: intro -->
+    <section id="intro" class="intro" style="background-color:white;">
+      <div class="intro-content">
+        <div class="container">
+          <div class="row">
+            <div class="product">
+	<div class="sub_product">
+		<div class="prod_header">
+
+            {% for data in datas %}
+            <div class="card"style=" width:25%; height:60%;display:inline-block;border:1px solid gray;">
+              <img src="{{ data.prod_photo.url }}" style="width:100%">
+              <center>
+                <h4>Name : {{ data.prod_name }}</h4>
+                <p class="price">Price : Rs.{{ data.category_id }}/-</p>
+              <p class="price">Price : Rs.{{ data.prod_price }}/-</p>
+                </center>
+
+              <p style="border: none;outline: 0;padding: 12px;color: white;background-color: #1B2631;text-align: center;cursor: pointer;width: 100%;font-size: 18px;"><a href="product_detail/{{ data.id }}" style="color:white;" >Product Detail</a></p>
+            </div>
+            {% endfor %}
+		</div>
+
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /Section: intro -->
+{% endblock %}

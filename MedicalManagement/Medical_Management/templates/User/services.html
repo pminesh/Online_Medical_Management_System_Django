@@ -1,0 +1,117 @@
+{% extends 'User/master.html' %}
+
+{% block title %}Services{% endblock %}
+
+<!-- css -->
+	{% load static %}
+  <link href="{% static 'User/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'User/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'User/plugins/cubeportfolio/css/cubeportfolio.min.css' %}">
+  <link href="{% static 'User/css/nivo-lightbox.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/nivo-lightbox-theme/default/default.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'User/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/animate.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/style.css' %}" rel="stylesheet">
+
+{% block body %}
+  <!-- Section: intro -->
+    <section id="intro" class="intro">
+      <div class="intro-content">
+        <div class="container">
+          <div class="row">
+            <div class="product">
+	<div class="sub_product">
+		<div class="prod_header">
+			<center>
+				<h3>Types of Medicine</h3>
+			</center>
+		</div>
+
+		<center>
+			<table cellspacing="30" cellpadding="30">
+				<tr>
+					<th>
+						<div class="card">
+						  <img src="{% static 'User/img/services/img3.jpg'%}" style="">
+						  <h1></h1>
+						  <p class="price"></p>
+						  <p></p>
+						</div>
+					</th>
+
+					<th>
+						<div class="card">
+						  <img src="{% static 'User/img/services/immg12.jpg' %}" style="">
+						  <h1></h1>
+						  <p class="price"></p>
+						  <p></p>
+						</div>
+					</th>
+				</tr>
+
+				<tr>
+					<th>
+						<div class="card">
+						  <img src="{% static 'User/img/services/img5.jpg' %}" style="">
+						  <h1></h1>
+						  <p class="price"></p>
+						  <p></p>
+						</div>
+					</th>
+
+					<th>
+						<div class="card">
+						  <img src="{% static 'User/img/services/img11.jpg' %}" style="">
+						  <h1></h1>
+						  <p class="price"></p>
+						  <p></p>
+						</div>
+					</th>
+
+				</tr>
+
+				<tr>
+					<th>
+						<div class="card">
+						  <img src="{% static 'User/img/services/img2.jpg' %}" style="">
+						  <h1></h1>
+						  <p class="price"></p>
+						  <p></p>
+						</div>
+					</th>
+
+					<th>
+						<div class="card">
+						  <img src="{% static 'User/img/services/img8.jpg' %}" style="">
+						  <h1></h1>
+						  <p class="price"></p>
+						  <p></p>
+						</div>
+					</th>
+
+				</tr>
+
+				<tr>
+					<th colspan="2" align="center">
+						<div class="card">
+						  <img src="{% static 'User/img/services/img10.jpg' %}" style="">
+						  <h1></h1>
+						  <p class="price"></p>
+						  <p></p>
+						</div>
+					</th>
+
+				</tr>
+			</table>
+		</center>
+		</div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /Section: intro -->
+{% endblock %}

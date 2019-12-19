@@ -1,0 +1,74 @@
+{% load static %};
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- css -->
+
+  <link href="{% static 'User/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'User/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'User/plugins/cubeportfolio/css/cubeportfolio.min.css' %}">
+  <link href="{% static 'User/css/nivo-lightbox.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/nivo-lightbox-theme/default/default.css' %}" rel="stylesheet" type="text/css" />
+  <link href="{% static 'User/css/owl.carousel.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/owl.theme.css' %}" rel="stylesheet" media="screen" />
+  <link href="{% static 'User/css/animate.css' %}" rel="stylesheet" />
+  <link href="{% static 'User/css/style.css' %}" rel="stylesheet">
+
+  <!-- boxed bg -->
+  <link id="bodybg" href="{% static 'User/bodybg/bg1.css' %}" rel="stylesheet" type="text/css" />
+  <!-- template skin -->
+  <link id="t-colors" href="{% static 'User/color/default.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: Medicio
+    Theme URL: https://bootstrapmade.com/medicio-free-bootstrap-theme/
+    Author: BootstrapMade
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+
+  <div id="wrapper">
+	  <!-- Start Header -->
+    {% include "User/header1.html" %}
+	  <!-- End Header -->
+
+	{% block body %}
+
+	  {% endblock %}
+    <!-- /Section: boxes -->
+
+	<!-- Start Footer -->
+	  {% include "User/footer.html" %}
+	  <!-- End Footer -->
+
+
+  </div>
+  <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+  <!-- Core JavaScript Files -->
+  <script src="{% static 'User/js/jquery.min.js' %}"></script>
+  <script src="{% static 'User/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'User/js/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'User/js/wow.min.js' %}"></script>
+  <script src="{% static 'User/js/jquery.scrollTo.js' %}"></script>
+  <script src="{% static 'User/js/jquery.appear.js' %}"></script>
+  <script src="{% static 'User/js/stellar.js' %}"></script>
+  <script src="{% static 'User/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js' %}"></script>
+  <script src="{% static 'User/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'User/js/nivo-lightbox.min.js' %}"></script>
+  <script src="{% static 'User/js/custom.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+{% extends 'Admin/admin_master.html' %}
+
+{% block title %}Add supplier{% endblock%}
+
+{% load static %};
+{% block css %}
+
+
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core Css -->
+    <link rel="stylesheet" href="{% static 'Admin/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/bootstrap-responsive.min.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/fullcalendar.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/matrix-style.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/css/matrix-media.css' %}" />
+<link rel="stylesheet" href="{% static 'Admin/font-awesome/css/font-awesome.css' %}"  />
+<link rel="stylesheet" href="{% static 'Admin/css/jquery.gritter.css' %}" />
+{% endblock%}
+
+{% block contant %}
+ <div class="container-fluid">
+     <div class="block-header">
+         <h2>Supplier</h2>
+     </div>
+
+     <div class="row clearfix">
+         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+             <div class="card">
+                 <div class="header">
+                     <h2>supplier Regsiter</h2>
+                 </div>
+                 <div class="body">
+                     <form id="form_validation" method="POST">
+                         {% csrf_token %}
+                         <div class="row clearfix">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                     <div class="form-line">
+                                         <input type="text" class="form-control" name="firstname" required maxlength="20" pattern="^[A-Za-z]+">
+                                         <label class="form-label">Firstname</label>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                     <div class="form-line">
+                                         <input type="text" class="form-control" name="lastname" required maxlength="20" pattern="^[A-Za-z]+">
+                                         <label class="form-label">Lastname</label>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                     <div class="form-line">
+                                         <input type="text" class="form-control" name="shopname" required maxlength="20" pattern="^[A-Za-z]+">
+                                         <label class="form-label">Shopname</label>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                     <div class="form-line">
+                                         <textarea type="text" class="form-control" name="address" style="height:35px;" required ></textarea>
+                                         <label class="form-label">Address</label>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                     <div class="form-line">
+                                         <input type="text" class="form-control" name="city" required maxlength="20" pattern="^[A-Za-z]+">
+                                         <label class="form-label">City</label>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                     <div class="form-line">
+                                         <input type="text" class="form-control" name="mobile" required maxlength="10" pattern="^[0-9]{10}">
+                                         <label class="form-label">Mobile No</label>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-4">
+                                 <div class="form-group">
+                                     <div class="form-line">
+                                         <input type="email" class="form-control" name="email" required maxlength="30">
+                                         <label class="form-label">Email</label>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-4">
+                                 <div class="form-group">
+                                     <div class="form-line">
+                                         <input type="password" class="form-control" name="password" required maxlength="30" pattern="(?=.*\d)(?=.*[a-z]).{8,}">
+                                         <label class="form-label">Password</label>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="col-md-4">
+                                 <div class="form-group">
+                                     <div class="form-line">
+                                         <input type="file" class="file-path validate" name="photo" required style="padding-left:50px; height:34px;">
+                                         <label class="form-label">Photo</label>
+                                     </div>
+                                 </div>
+                             </div>
+
+                             <center><button class="btn btn-primary waves-effect" type="submit">SUBMIT</button></center>
+                         </div>
+                     </form>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+{% endblock %}
